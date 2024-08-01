@@ -1,14 +1,49 @@
 {% extends "users/base.html" %}
 {% block title %}Generic{% endblock title%}
 {% block content %}
-    <div class="jumbotron">
-        <h1 class="display-4">Generic</h1>
-        <p class="lead">
-            Generic
-        </p>
-        <hr class="my-4">
-        <p class="lead">
-        </p>
-    </div>
+<!-- generic.html -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generic Scholarships</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .scholarship {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .scholarship h2 {
+            margin-top: 0;
+        }
+        .scholarship p {
+            margin: 5px 0;
+        }
+        .scholarship a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generic Scholarships</h1>
+    {% if generic_scholarships %}
+        {% for name, details in generic_scholarships.items %}
+            <div class="scholarship">
+                <h2>{{ name }}</h2>
+                <p><strong>Description:</strong> {{ details.desc }}</p>
+                <p><strong>Eligibility:</strong> {{ details.eligibility }}</p>
+                <p><strong>Level of Study:</strong> {{ details.lvl_study }}</p>
+                <p><strong>Location:</strong> {{ details.location }}</p>
+                <p><a href="{{ details.website }}" target="_blank">More Info</a></p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No generic scholarships available at the moment.</p>
+    {% endif %}
+</body>
+</html>
+
 
 {% endblock content %}
